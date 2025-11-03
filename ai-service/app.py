@@ -23,7 +23,7 @@ Path(OUTPUT_DIR).mkdir(exist_ok=True)
 
 # Load YOLO model
 try:
-    model = YOLO('yolov8n.pt')
+    model = YOLO('yolo11x.pt')
     logger.info("YOLO model loaded successfully")
 except Exception as e:
     logger.error(f"Failed to load YOLO model: {e}")
