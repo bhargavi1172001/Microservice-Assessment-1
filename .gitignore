@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+outputs/images/
+outputs/json/
+*.pt
+*.weights
+.DS_Store
+.env
