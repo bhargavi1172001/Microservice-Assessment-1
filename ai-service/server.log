@@ -1,0 +1,114 @@
+nohup: ignoring input
+INFO:__main__:📁 Output directories ready: /home/bhargavi/assessment/ai-service/outputs/images
+INFO:__main__:✅ YOLO model loaded successfully
+ * Serving Flask app 'app'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.28.67.72:5002
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:__main__:📸 Received image file: Labrador_Retriever_portrait.jpg
+INFO:__main__:🔍 Running YOLO detection...
+
+ERROR:__main__:❌ Detection error: expected np.ndarray (got numpy.ndarray)
+ERROR:__main__:Traceback (most recent call last):
+  File "/home/bhargavi/assessment/ai-service/app.py", line 76, in detect_objects
+    results = model.predict(source=image, save=False, conf=0.25)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/model.py", line 554, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 168, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Result into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 38, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 250, in stream_inference
+    im = self.preprocess(im0s)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 127, in preprocess
+    im = torch.from_numpy(im)
+         ^^^^^^^^^^^^^^^^^^^^
+TypeError: expected np.ndarray (got numpy.ndarray)
+
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2025 16:02:34] "[35m[1mPOST /detect HTTP/1.1[0m" 500 -
+INFO:__main__:📸 Received image file: Labrador_Retriever_portrait.jpg
+INFO:__main__:🔍 Running YOLO detection...
+
+ERROR:__main__:❌ Detection error: expected np.ndarray (got numpy.ndarray)
+ERROR:__main__:Traceback (most recent call last):
+  File "/home/bhargavi/assessment/ai-service/app.py", line 76, in detect_objects
+    image_np = np.array(image)
+              ^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/model.py", line 554, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 168, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Result into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 38, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 250, in stream_inference
+    im = self.preprocess(im0s)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 127, in preprocess
+    im = torch.from_numpy(im)
+         ^^^^^^^^^^^^^^^^^^^^
+TypeError: expected np.ndarray (got numpy.ndarray)
+
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2025 16:07:16] "[35m[1mPOST /detect HTTP/1.1[0m" 500 -
+INFO:__main__:📸 Received image file: Labrador_Retriever_portrait.jpg
+INFO:__main__:🔍 Running YOLO detection...
+
+ERROR:__main__:❌ Detection error: expected np.ndarray (got numpy.ndarray)
+ERROR:__main__:Traceback (most recent call last):
+  File "/home/bhargavi/assessment/ai-service/app.py", line 76, in detect_objects
+    image_np = np.array(image)
+              ^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/model.py", line 554, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 168, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Result into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 38, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 250, in stream_inference
+    im = self.preprocess(im0s)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 127, in preprocess
+    im = torch.from_numpy(im)
+         ^^^^^^^^^^^^^^^^^^^^
+TypeError: expected np.ndarray (got numpy.ndarray)
+
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2025 16:09:44] "[35m[1mPOST /detect HTTP/1.1[0m" 500 -
+INFO:__main__:📸 Received image file: Labrador_Retriever_portrait.jpg
+INFO:__main__:🔍 Running YOLO detection...
+
+ERROR:__main__:❌ Detection error: expected np.ndarray (got numpy.ndarray)
+ERROR:__main__:Traceback (most recent call last):
+  File "/home/bhargavi/assessment/ai-service/app.py", line 76, in detect_objects
+    image_np = np.array(image)
+              ^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/model.py", line 554, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 168, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Result into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 38, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 250, in stream_inference
+    im = self.preprocess(im0s)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhargavi/assessment/ai-service/venv/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 127, in preprocess
+    im = torch.from_numpy(im)
+         ^^^^^^^^^^^^^^^^^^^^
+TypeError: expected np.ndarray (got numpy.ndarray)
+
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2025 16:10:10] "[35m[1mPOST /detect HTTP/1.1[0m" 500 -

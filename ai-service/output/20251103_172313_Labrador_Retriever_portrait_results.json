@@ -1,0 +1,19 @@
+{
+  "image_filename": "Labrador_Retriever_portrait.jpg",
+  "timestamp": "2025-11-03T17:23:13.958836",
+  "detections": [
+    {
+      "bbox": {
+        "x1": 168.9383544921875,
+        "y1": 26.123655319213867,
+        "x2": 1162.7684326171875,
+        "y2": 784.5704956054688
+      },
+      "confidence": 0.6072709560394287,
+      "class_id": 16,
+      "class_name": "dog"
+    }
+  ],
+  "detection_count": 1,
+  "success": true
+}

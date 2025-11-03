@@ -1,0 +1,96 @@
+from flask import Flask, request, jsonify
+from ultralytics import YOLO
+from PIL import Image
+import io
+import base64
+import os
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+app = Flask(__name__)
+
+# Load the model
+try:
+    model = YOLO('yolov8s.pt')
+    logger.info("YOLO model loaded successfully")
+except Exception as e:
+    logger.error(f"Error loading model: {e}")
+    raise e
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'AI service is running', 'model': 'YOLOv8s'})
+
+@app.route('/detect', methods=['POST'])
+def detect_objects():
+    try:
+        # Check if image is provided
+        if 'image' not in request.files and 'image_b64' not in request.json:
+            return jsonify({'error': 'No image provided. Use "image" for file upload or "image_b64" for base64'}), 400
+        
+        # Handle file upload
+        if 'image' in request.files:
+            image_file = request.files['image']
+            if image_file.filename == '':
+                return jsonify({'error': 'No selected file'}), 400
+            image = Image.open(image_file)
+            logger.info(f"Received image file: {image_file.filename}")
+        
+        # Handle base64 image
+        elif 'image_b64' in request.json:
+            image_data = base64.b64decode(request.json['image_b64'])
+            image = Image.open(io.BytesIO(image_data))
+            logger.info("Received base64 image")
+        
+        # Convert image to RGB if necessary
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+        
+        # Perform detection
+        results = model(image)
+        
+        # Format results
+        detections = []
+        for result in results:
+            boxes = result.boxes
+            for box in boxes:
+                detection = {
+                    'class': model.names[int(box.cls)],
+                    'confidence': round(float(box.conf), 4),
+                    'bbox': {
+                        'x1': round(float(box.xyxy[0][0]), 2),
+                        'y1': round(float(box.xyxy[0][1]), 2),
+                        'x2': round(float(box.xyxy[0][2]), 2),
+                        'y2': round(float(box.xyxy[0][3]), 2)
+                    }
+                }
+                detections.append(detection)
+        
+        logger.info(f"Detection completed: {len(detections)} objects found")
+        
+        return jsonify({
+            'detections': detections,
+            'count': len(detections),
+            'status': 'success'
+        })
+        
+    except Exception as e:
+        logger.error(f"Detection error: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/model/info', methods=['GET'])
+def model_info():
+    """Get information about the loaded model"""
+    return jsonify({
+        'model_name': 'YOLOv8s',
+        'classes': list(model.names.values()),
+        'input_size': getattr(model, 'imgsz', 640)
+    })
+
+if __name__ == '__main__':
+    port = int(os.getenv('PORT', 5001))
+    debug = os.getenv('DEBUG', 'False').lower() == 'true'
+    app.run(host='0.0.0.0', port=port, debug=debug)
