@@ -1,11 +1,11 @@
 # Object Detection Microservice 🎯
 
-A microservice architecture for real-time object detection using YOLOv8, built with Flask and Docker.
+A microservice architecture for real-time object detection using YOLO11x, built with Flask and Docker.
 
 ## Features
 
 - 🖼️ Web interface for easy image upload
-- 🤖 AI backend with YOLOv8 object detection
+- 🤖 AI backend with YOLO11x object detection
 - 🐳 Docker containerization
 - 🔍 Real-time object detection with confidence scores
 - 📊 JSON API for integration
